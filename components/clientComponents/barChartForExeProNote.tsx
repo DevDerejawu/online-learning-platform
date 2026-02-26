@@ -28,7 +28,7 @@ const BarChartForExeProNote = ({submittedByType, totalByType}:barProp) => {
         {(!submittedByType?.Project || !submittedByType?.Note || !submittedByType?.Exercise) &&<h2 className="text-red-500 m-2 p-3">If you don't submit any of them, we have added one by default, but after submitting it will automaticall removed!</h2>}
       </CardHeader>
       <CardContent>
-        {/* Fixed height on the wrapper is the key! */}
+        
         <div style={{ width: '100%', height: 300 }}>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={barData}>

@@ -27,7 +27,7 @@ const supabase = createClient()
   },[])
   const [isLogin, setIsLogin] = useState(true);
 
-  // ✅ Correct mapping
+  
   const [signInState, signInAction, signInPending] =
     useActionState(signInServerAction, initialState);
 
@@ -36,7 +36,7 @@ const supabase = createClient()
 
   const pending = signInPending || signUpPending;
 
-  // ✅ Select active state dynamically
+  // Select active state dynamically
   const activeState = isLogin ? signInState : signUpState;
   const formAction = isLogin ? signInAction : signUpAction;
 
@@ -76,12 +76,12 @@ useEffect(() => {
         Welcome! Please {isLogin ? "sign in" : "sign up"} to continue
       </p>
 
-      {/* 🔵 Social Login */}
+      
       <div className="mt-10 mb-2 grid w-full grid-cols-2 gap-6">
         <button
           type="button"
           onClick={() => handleSocialLogin("google")}
-          className="flex items-center justify-center rounded-full border py-2.5"
+          className="flex items-center hover:text-slate-600 cursor-pointer justify-center rounded-full border py-2.5"
         >
           <SiGoogle size={22} />
           <span className="ml-3">Google</span>
@@ -90,7 +90,8 @@ useEffect(() => {
         <button
           type="button"
           onClick={() => handleSocialLogin("github")}
-          className="flex items-center justify-center rounded-full border py-2.5"
+          className="flex items-center disabled:cursor-pointer justify-center rounded-full border py-2.5"
+          disabled={true}
         >
           <SiGithub size={22} />
           <span className="ml-3">GitHub</span>

@@ -24,7 +24,7 @@ const AboutUs = () => {
   return (
     <section className="w-full bg-slate-950 py-20 px-6" id="about">
       <div className="mx-auto max-w-5xl text-center">
-        {/* Heading */}
+
         <motion.h2
           variants={fadeUp}
           initial="hidden"
@@ -35,7 +35,7 @@ const AboutUs = () => {
           About Us
         </motion.h2>
 
-        {/* Paragraph 1 */}
+        
         <motion.p
           variants={fadeUp}
           custom={0.1}
@@ -49,7 +49,7 @@ const AboutUs = () => {
           full-stack development.
         </motion.p>
 
-        {/* Paragraph 2 */}
+        
         <motion.p
           variants={fadeUp}
           custom={0.2}
@@ -63,7 +63,7 @@ const AboutUs = () => {
           finish — without confusion or unnecessary complexity.
         </motion.p>
 
-        {/* Paragraph 3 */}
+        
         <motion.p
           variants={fadeUp}
           custom={0.3}
@@ -77,7 +77,7 @@ const AboutUs = () => {
           or financial barriers.
         </motion.p>
 
-        {/* Mission Card */}
+        
         <motion.div
           variants={fadeUp}
           custom={0.4}

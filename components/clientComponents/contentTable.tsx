@@ -63,7 +63,7 @@ const ContentTable = ({
         },
       );
       const result = await res.json();
-      console.log("resulllllllllll", result)
+      console.log("resulllllllllll", result);
       if (!result.success) {
         setMessage(result.message);
       }

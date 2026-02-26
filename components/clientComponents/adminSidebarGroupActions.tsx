@@ -15,7 +15,7 @@ import { useFormTypeId } from "@/app/contexts/contentFormRelatedContext";
 
 const AdminSidebarGroupActions = ({contentTypes, techs, categories}:adminActionProps) => {
 
-  //context is here
+
   const {setContentOfType, contentOfType, isAddingState, setIsAddingState, openDialog, setOpenDialog} = useFormTypeId();
 
   const [types, setTypes] = useState<optionType[] | null>(null);

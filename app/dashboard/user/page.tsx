@@ -33,7 +33,7 @@ if(!errorGetUserId){
 
 // group totals
 const totalByType = contents?.reduce((acc, item) => {
-  const type = (item.content_types as { name: string })?.name;
+  const type = (item.content_types)?.name;
 
   if (!type) return acc;
   acc[type] = (acc[type] || 0) + 1;
@@ -65,7 +65,7 @@ const submittedByType = (submitted)?.reduce((acc, row) => {
   return acc;
 }, {} as Record<string, number>);
 
-console.log("submittedBytypeeeeeeeeeeeeee", submittedByType);
+
   return (
     <>
     <HandleCodeCleanup/>
