@@ -5,17 +5,9 @@ A modern full-stack learning management platform built with Next.js, TypeScript,
 Live Demo:
 👉 https://devderejawulearninghub.vercel.app
 
-📌 Overview
+GitHub ripo: hh
 
-Dev Derejawu Learning Hub is a structured educational platform that provides:
-
-📚 Notes
-
-🎥 Videos
-
-🧪 Exercises
-
-💻 Projects
+Dev Derejawu Learning Hub is a structured educational platform that provides: Notes, Videos, Exercises and Projects.
 
 Content is organized by:
 
@@ -27,48 +19,13 @@ Parts (Step-by-step progression inside each tech stack)
 
 Content Type (Video, Note, Exercise, Project)
 
-The platform includes both:
+The platform includes both: Admin Dashboard and User Dashboard
 
-👨‍💼 Admin Dashboard
-
-👨‍🎓 User Dashboard
-
-🛠 Tech Stack
-Frontend
-
-Next.js
-
-TypeScript
-
-TailwindCSS
-
-shadcn/ui
-
-Backend & Database
-
-Supabase
-
-Authentication
-
-PostgreSQL Database
-
-Storage
-
-Row Level Security (RLS)
+🛠 Tech Stacks : Next.js, TypeScript ,TailwindCSS, shadcn/ui, Supabase,  Row Level Security (RLS)
 
 🔐 Authentication & Authorization
 
-Supabase handles:
-
-User authentication
-
-Role-based access control
-
-Row Level Security (RLS) for secure CRUD operations
-
-Secure submission tracking
-
-Public message handling (no login required)
+Supabase handles: User authentication, Role-based access control, Row Level Security (RLS) for secure CRUD operations, Secure submission tracking, Public message handling (no login required)
 
 👨‍💼 Admin Dashboard Features
 
@@ -96,61 +53,37 @@ Tech Stack (HTML, CSS, JS, TS, React, Node.js, etc.)
 
 Users can:
 
-📊 View total completed:
+📊 View total completed: Projects, Notes, Exercises
 
-Projects
-
-Notes
-
-Exercises
-
-📈 See progress visualized with:
-
-Bar Graph
-
-Pie Chart
+📈 See progress visualized with: Bar Graph, Pie Chart
 
 📚 Navigate learning path:
 
 Category → Tech → Part → Content
 
-📤 Submit:
+📤 Submit: Notes, Exercises, Projects
 
-Notes
 
-Exercises
-
-Projects
-
-📥 Track submission history
 
 🧠 Learning Structure
 
 Each learning path follows this structure:
 
 Category
-  └── Tech Stack
-        └── Part (1, 2, 3...)
-              ├── Note
+  |____ Tech Stack
+        |__ Part (1, 2, 3...)
+              |── Note
               ├── Exercise
               ├── Project
               └── Video
 
-This ensures:
-
-Progressive learning
-
-Structured knowledge building
-
-Practical application
-
-Clear tracking of mastery
-
-🗄 Database Schema & Relationships
+This ensures:Progressive learning, Structured knowledge building, Practical application, Clear tracking of mastery, Database Schema & Relationships
 
 The platform uses PostgreSQL via Supabase.
 
-1️⃣ Categories Table
+There are 6 tables and explained as follow.
+
+1️⃣ categories Table
 
 Stores main learning domains.
 
@@ -158,17 +91,9 @@ categories
 - id (uuid, PK)
 - name (unique)
 
-Example:
+Example:Frontend, Backend, Database, API
 
-Frontend
-
-Backend
-
-Database
-
-API
-
-2️⃣ Content Types Table
+2️⃣ content_types Table
 
 Defines the type of learning material.
 
@@ -176,17 +101,9 @@ content_types
 - id (uuid, PK)
 - name (unique)
 
-Example:
+Example: Vide, Note, Exercise, Project
 
-Video
-
-Note
-
-Exercise
-
-Project
-
-3️⃣ Tech Table
+3️⃣ tech Table
 
 Each technology belongs to a category.
 
@@ -195,91 +112,40 @@ tech
 - name (unique)
 - category_id (FK → categories.id)
 
-Example:
+Example: React → Frontend, Node.js → Backend, MySQL → Database
 
-React → Frontend
+Relationship: categories (1) → tech (many)
 
-Node.js → Backend
-
-PostgreSQL → Database
-
-Relationship:
-
-categories (1) → tech (many)
-4️⃣ Contents Table
+4️⃣ contents Table
 
 Core learning material table.
 
-contents
-- id (uuid, PK)
-- title
-- description
-- content_type_id (FK → content_types.id)
-- category_id (FK → categories.id)
-- tech_id (FK → tech.id)
-- content (text or storage reference)
-- created_by (FK → auth.users.id)
-- part (integer)
-- created_at
-- updated_at
+contents- id (uuid, PK), title, description, content_type_id (FK → content_types.id), category_id (FK → categories.id), tech_id (FK → tech.id), content (text or storage reference), created_by (FK → auth.users.id),  part (integer), created_at, updated_at
 
 Relationships:
-
 categories (1) → contents (many)
 content_types (1) → contents (many)
 tech (1) → contents (many)
 auth.users (1) → contents (many)
 
-This enables:
+This enables: Multi-level filtering, Structured part-based progression, Role-controlled content creation
 
-Multi-level filtering
-
-Structured part-based progression
-
-Role-controlled content creation
-
-5️⃣ Submitted Projects / Notes / Exercises
+5️⃣ submitted_projects_note_exercise table
 
 Tracks user submissions.
 
-submitted_project_note_exercise
-- id (uuid, PK)
-- content_id (FK → contents.id)
-- submitted_by (FK → auth.users.id)
-- submitted_at
-- updated_at
+submitted_project_note_exercise: id (uuid, PK), content_id (FK → contents.id), submitted_by (FK → auth.users.id), submitted_at, updated_at.
 
-Relationships:
+Relationships: contents (1) → submissions (many), auth.users (1) → submissions (many)
 
-contents (1) → submissions (many)
-auth.users (1) → submissions (many)
+Used for: Progress tracking, Completion statistics, Dashboard analytics
 
-Used for:
-
-Progress tracking
-
-Completion statistics
-
-Dashboard analytics
-
-6️⃣ Messages Table
-
+6️⃣ messages Table
 Accepts messages from anyone (authenticated or not).
 
-messages
-- id (uuid, PK)
-- name
-- email
-- message
-- created_at
+messages: id (uuid, PK), name, email,  message, created_at
 
-Used for:
-
-Contact form
-
-Feedback collection
-
-Public inquiries
+Used for: Contact form, Feedback collection, Public inquiries
 
 🔐 Row Level Security (RLS)
 
@@ -293,13 +159,7 @@ Submissions: User-specific access
 
 Messages: Public insert allowed
 
-Ensures:
-
-Secure data access
-
-Proper role isolation
-
-Production-ready security model
+Ensures: Secure data access, Proper role isolation, Production-ready security model
 
 📊 Progress Analytics
 
@@ -313,33 +173,16 @@ Aggregated by category
 
 Aggregated by content type
 
-Visualized with:
-
-Bar charts
-
-Pie charts
+Visualized with: Bar charts, Pie charts
 
 🚀 Deployment
 
-Frontend deployed on:
+Frontend deployed on: Vercel
 
-Vercel
+Backend powered by: Supabase
 
-Backend powered by:
-
-Supabase
-
-📂 Project Structure (Simplified)
-app/
-  dashboard/
-    admin/
-    user/
-components/
-lib/
-public/
-supabase/  👨‍💻 Author
-
-##Built by Derejawu
+  Author
+Built by Derejawu
 
 Full Stack Developer focused on building structured, real-world educational platforms.
 
