@@ -29,11 +29,13 @@ const DashboardOverview = async() => {
 if(!errorGetUserId){
   console.log("errorGetUserId", errorGetUserId);
 }
-
+function asContentType(data:unknown){
+  return data as {name:string}
+}
 
 // group totals
 const totalByType = contents?.reduce((acc, item) => {
-  const type = (item.content_types)?.name;
+  const type = asContentType(item.content_types)?.name;
 
   if (!type) return acc;
   acc[type] = (acc[type] || 0) + 1;
@@ -57,10 +59,12 @@ console.log("submitError", submitError)
 type submittedType = {
   contents: {content_types:{name:string}}
 }[]
-
+function asContent(data: unknown) {
+  return data as {content_types: {name: string}};
+}
 // group submitted
 const submittedByType = (submitted)?.reduce((acc, row) => {
-  const type = row.contents?.content_types?.name;
+  const type = asContent(row.contents)?.content_types?.name;
   acc[type] = (acc[type] || 0) + 1;
   return acc;
 }, {} as Record<string, number>);
