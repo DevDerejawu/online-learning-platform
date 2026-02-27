@@ -5,7 +5,7 @@ A modern full-stack learning management platform built with Next.js, TypeScript,
 Live Demo:
 👉 https://devderejawulearninghub.vercel.app
 
-GitHub ripo: hh
+GitHub ripo: https://github.com/DevDerejawu/online-learning-platform.git
 
 Dev Derejawu Learning Hub is a structured educational platform that provides: Notes, Videos, Exercises and Projects.
 
